@@ -1,0 +1,26 @@
+<div class="users-table-main">
+    <button mat-raised-button color="primary" (click)="openCreateDialog()">+ Add New User</button>
+    <br/>
+    <br/>
+    <ng-container *subscribe="this.allUserInfo$ as allUserInfo">
+      <table class="users-table" *ngIf="allUserInfo?.isSuccess">
+        <tr>
+          <th>Email</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let userInfo of allUserInfo.data">
+          <td >{{userInfo.email}}</td>
+          <td >{{userInfo.first_name}}</td>
+          <td >{{userInfo.last_name}}</td>
+          <td >
+            <div class="button-group">
+              <button mat-raised-button color="primary" (click)="openEditDialog(userInfo)">Edit</button>
+              <button mat-raised-button color="accent" (click)="this.onDeleteUserInfo(userInfo?.user_id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+</div>

@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Edit User</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>User Email</mat-label>
+      <input matInput placeholder="Ex. test@example.com" value="{{this.email || data?.email}}" (change)="this.onChangeUserEmail($event)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Ex. John" value="{{this.first_name || data?.first_name}}" (change)="this.onChangeFirstName($event)">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Ex. Doe" value="{{this.last_name ||  data?.last_name}}" (change)="this.onChangeLastName($event)">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button 
+    (click)="this.onEditUserInfo()"
+    *subscribe="this.editUserInfoMutation.result$ as editUserInfoMutation"
+  >
+    Edit {{ editUserInfoMutation?.isLoading ? 'Loading' : '' }}
+  </button>
+</mat-dialog-actions>

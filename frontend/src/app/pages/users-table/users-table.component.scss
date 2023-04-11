@@ -1,0 +1,17 @@
+.users-table-main {
+    padding: 50px;
+    .users-table {
+        border-collapse: collapse;
+        border: 1px solid black;
+        width: 100%;
+        td, th {
+            border: 1px solid gray;
+            text-align: center;
+            padding: 10px;
+        }
+    }
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+}
