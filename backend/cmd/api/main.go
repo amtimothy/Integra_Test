@@ -12,6 +12,9 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
+// We have to initialize the database before starting the server
+// Otherwise, the server will not be able to connect to the database
+
 func main() {
 
 	//  connect to DB
